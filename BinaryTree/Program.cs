@@ -14,11 +14,11 @@ namespace BinaryTree
             tree.Insert(6);
             tree.Insert(8);
             tree.Insert(10);
-            tree.TraversePreOrder();
-            tree.TraverseInOrder();
+            //tree.TraversePreOrder();
+            //tree.TraverseInOrder();
+            //Console.WriteLine("Result:"+tree.Find(55));
 
-
-            Console.WriteLine("Result:"+tree.Find(55));
+            Console.WriteLine("Tree Height is: "+tree.Height());
         }
     }
 }

@@ -102,6 +102,36 @@ namespace BinaryTree
             TraverseInOrder(root.RightChild);
         }
 
+        public void TraversePostOrder() {
+            Console.WriteLine("Print post order traversing");
+            TraversePostOrder(Root);
+        }
 
+        private void TraversePostOrder(Node root)
+        {
+            if (root == null) {
+                return;
+            }
+            TraversePostOrder(root.LeftChild);
+            TraversePostOrder(root.RightChild);
+            Console.WriteLine(root.Value);
+        }
+
+        public int Height() {
+            return Height(Root);
+        }
+
+        private int Height(Node root) {
+            if (root==null)
+            {
+                return -1;
+            }
+            if (root.LeftChild==null && root.RightChild==null)
+            {
+                return 0;
+            }
+            var result = 1 + Math.Max(Height(root.LeftChild), Height(root.RightChild));
+            return result;
+        }
     }
 }
