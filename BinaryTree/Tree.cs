@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.ExceptionServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Transactions;
@@ -23,9 +24,7 @@ namespace BinaryTree
                 return "Node=" + Value;
             }
         }
-
-        private Node Root { get; set; }
-        
+        private Node Root { get; set; }       
         public void Insert(int val) {
             var node = new Node(val);
             if (Root == null) {
@@ -53,7 +52,6 @@ namespace BinaryTree
                 }
             }
         }
-
         public bool Find(int val) {
             var current = Root;
             while (current!=null)
@@ -70,7 +68,6 @@ namespace BinaryTree
             }
             return false;
         }
-
         public void TraversePreOrder() {
             Console.WriteLine("Print pre order traversing");
             TraversePreOrder(Root);
@@ -101,12 +98,10 @@ namespace BinaryTree
             //Right
             TraverseInOrder(root.RightChild);
         }
-
         public void TraversePostOrder() {
             Console.WriteLine("Print post order traversing");
             TraversePostOrder(Root);
         }
-
         private void TraversePostOrder(Node root)
         {
             if (root == null) {
@@ -116,11 +111,9 @@ namespace BinaryTree
             TraversePostOrder(root.RightChild);
             Console.WriteLine(root.Value);
         }
-
         public int Height() {
             return Height(Root);
         }
-
         private int Height(Node root) {
             if (root==null)
             {
@@ -133,11 +126,9 @@ namespace BinaryTree
             var result = 1 + Math.Max(Height(root.LeftChild), Height(root.RightChild));
             return result;
         }
-
         private bool isLeaf(Node root) {
             return root.LeftChild == null && root.RightChild == null;
         }
-
         public int Min() {
             if (Root == null)
                 throw new InvalidOperationException();
@@ -152,7 +143,6 @@ namespace BinaryTree
             //}
             //return last.Value.Value;            
         }
-
         //O(n)
         private int Min(Node root) {
             if (isLeaf(root))
@@ -162,6 +152,28 @@ namespace BinaryTree
             var left = Min(root.LeftChild);
             var right = Min(root.RightChild);
             return Math.Min(Math.Min(left, right), root.Value.Value);
+        }
+
+        public bool isEquals(Tree other) {
+            if (other==null)
+            {
+                return false;
+            }
+            return isEquals(Root, other.Root);
+        }
+
+        private bool isEquals(Node first, Node second) {
+            if (first==null && second==null)
+            {
+                return true;
+            }
+            if (first!=null && second!=null)
+            {
+                return first.Value == first.Value
+                    && isEquals(first.LeftChild, second.LeftChild)
+                    && isEquals(first.RightChild, second.RightChild);
+            }
+            return false;
         }
     }
 }
