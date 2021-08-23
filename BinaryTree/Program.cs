@@ -19,6 +19,7 @@ namespace BinaryTree
             //Console.WriteLine("Result:"+tree.Find(55));
 
             Console.WriteLine("Tree Height is: "+tree.Height());
+            Console.WriteLine("Tree min value is: " + tree.Min());
         }
     }
 }

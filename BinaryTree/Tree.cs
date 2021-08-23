@@ -126,12 +126,42 @@ namespace BinaryTree
             {
                 return -1;
             }
-            if (root.LeftChild==null && root.RightChild==null)
+            if (isLeaf(root))
             {
                 return 0;
             }
             var result = 1 + Math.Max(Height(root.LeftChild), Height(root.RightChild));
             return result;
+        }
+
+        private bool isLeaf(Node root) {
+            return root.LeftChild == null && root.RightChild == null;
+        }
+
+        public int Min() {
+            if (Root == null)
+                throw new InvalidOperationException();
+            return Min(Root);
+            //Search binary tree O(log n)
+            //var current = Root;
+            //var last = current;
+            //while (current!=null)
+            //{
+            //    last = current;
+            //    current = current.LeftChild;
+            //}
+            //return last.Value.Value;            
+        }
+
+        //O(n)
+        private int Min(Node root) {
+            if (isLeaf(root))
+            {
+                return root.Value.Value;
+            }
+            var left = Min(root.LeftChild);
+            var right = Min(root.RightChild);
+            return Math.Min(Math.Min(left, right), root.Value.Value);
         }
     }
 }
