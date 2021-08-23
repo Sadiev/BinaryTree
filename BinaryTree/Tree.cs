@@ -175,5 +175,23 @@ namespace BinaryTree
             }
             return false;
         }
+        public bool isBinarySearchTree()
+        {            
+            return isBinarySearchTree(Root, int.MinValue, int.MaxValue);
+        }
+        private bool isBinarySearchTree(Node root, int min, int max) {
+            if (root == null)
+                return true;
+            if (root.Value < min || root.Value > max)
+                return false;
+            return isBinarySearchTree(root.LeftChild, min, root.Value.Value-1)
+                && isBinarySearchTree(root.RightChild, root.Value.Value+1, max);
+        }
+
+        public void swapRoot() {
+            var temp = Root.LeftChild;
+            Root.LeftChild = Root.RightChild;
+            Root.RightChild = temp;
+        }
     }
 }

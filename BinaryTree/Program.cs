@@ -29,6 +29,8 @@ namespace BinaryTree
             Console.WriteLine("Tree Height is: "+tree.Height());
             Console.WriteLine("Tree min value is: " + tree.Min());
             Console.WriteLine("tree and tree2 are equals: " + tree.isEquals(tree2));
+            tree.swapRoot();
+            Console.WriteLine("Chcek Validating Binary Search Trees: " + tree.isBinarySearchTree());
         }
     }
 }
