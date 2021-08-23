@@ -25,6 +25,9 @@ namespace BinaryTree
             //tree.TraversePreOrder();
             //tree.TraverseInOrder();
             //Console.WriteLine("Result:"+tree.Find(55));
+            Console.WriteLine("Level Order Traversal");
+            tree.traverseLevelOrder();
+            Console.WriteLine("Get Nodes At Distance Two");
             var nodes = tree.getNodesAtDistance(2);
             foreach (var node in nodes)
             {

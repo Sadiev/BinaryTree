@@ -212,5 +212,15 @@ namespace BinaryTree
             getNodesAtDistance(root.LeftChild, distance-1, list);
             getNodesAtDistance(root.RightChild, distance - 1, list);
         }
+
+        public void traverseLevelOrder() {
+            for (int i = 0; i <= Height(); i++)
+            {
+                foreach (var item in getNodesAtDistance(i))
+                {
+                    Console.WriteLine(item);
+                }
+            }
+        }
     }
 }
