@@ -193,5 +193,24 @@ namespace BinaryTree
             Root.LeftChild = Root.RightChild;
             Root.RightChild = temp;
         }
+
+        public List<int> getNodesAtDistance(int distance) {
+            var list = new List<int>();
+            getNodesAtDistance(Root, distance, list);
+            return list;
+        }
+        private void getNodesAtDistance(Node root, int distance, List<int> list) {
+            if (root==null)
+            {
+                return;
+            }
+            if (distance==0)
+            {
+                list.Add(root.Value.Value);
+                //Console.WriteLine(root.Value);
+            }
+            getNodesAtDistance(root.LeftChild, distance-1, list);
+            getNodesAtDistance(root.RightChild, distance - 1, list);
+        }
     }
 }

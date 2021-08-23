@@ -25,7 +25,11 @@ namespace BinaryTree
             //tree.TraversePreOrder();
             //tree.TraverseInOrder();
             //Console.WriteLine("Result:"+tree.Find(55));
-
+            var nodes = tree.getNodesAtDistance(2);
+            foreach (var node in nodes)
+            {
+                Console.WriteLine(node);
+            }
             Console.WriteLine("Tree Height is: "+tree.Height());
             Console.WriteLine("Tree min value is: " + tree.Min());
             Console.WriteLine("tree and tree2 are equals: " + tree.isEquals(tree2));
